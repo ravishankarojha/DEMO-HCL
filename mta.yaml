@@ -7,7 +7,7 @@ parameters:
 
 modules:
   - name: "fiori201"
-    type: com.sap.hcp.html5
+    type: html5
     path: .
     parameters:
        version: 1.0.0-${timestamp}
