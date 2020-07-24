@@ -10,8 +10,6 @@ modules:
     type: com.sap.hcp.html5
     path: .
     parameters:
-    disk-quota: 128M
-        memory: 128M
        version: 1.0.0-${timestamp}
     build-parameters:
        builder: grunt
