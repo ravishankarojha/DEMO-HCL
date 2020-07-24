@@ -3,7 +3,7 @@ ID: "com.sap.teched2019.cna370.fiori"
 version: 1.0.0
 
 parameters:
-  hcp-deployer-version: "1.0.0"
+  hcp-deployer-version: "0.0.0"
 
 modules:
   - name: "fiori201"
