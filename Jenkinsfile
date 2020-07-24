@@ -19,9 +19,9 @@ node() {
        neoDeploy script: this
   }
   stage('solmanTrCreate') {
-      transportRequestCreate script:this, changeDocumentId:'8000000112',developmentSystemId: 'SDS~ABAP/900',applicationId: 'HCP'
+      transportRequestCreate script:this, changeDocumentId:'8000000112',developmentSystemId: 'SDS~ABAP/219',applicationId: 'HCP'
   }
   stage('solmanTRrelease') {
-      transportRequestRelease  script:this, changeDocumentId:'8000000112',developmentSystemId: 'SDS~ABAP/900',applicationId: 'HCP'
+      transportRequestRelease  script:this, changeDocumentId:'8000000112',developmentSystemId: 'SDS~ABAP/219',applicationId: 'HCP'
   }
 }
