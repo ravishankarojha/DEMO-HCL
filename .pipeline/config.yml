@@ -15,13 +15,3 @@ steps:
     account: 's0017024127trial'
     transportRequestUploadFile:
       applicationId: 'HCP'
-      
-steps:  
-    gctsCreateRepository:
-    host: 'https://hcluks4hana.hcldigilabs.com:8002'
-    client: '000'
-    abapCredentialsId: 'ABAPUserPasswordCredentialsId'
-    repository: 'myrepo'
-    remoteRepositoryURL: 'https://github.com/user/myrepo'
-    role: 'SOURCE'
-    vSID: 'ABC'
