@@ -8,7 +8,7 @@ node() {
 
       setupCommonPipelineEnvironment script:this
 
-           checkChangeInDevelopment script: this,changeDocumentId:'8000000112'     
+           checkChangeInDevelopment script: this,changeDocumentId:'8000000309'     
     
        }
  stage('build') {
@@ -19,9 +19,9 @@ node() {
        neoDeploy script: this
   }
   stage('solmanTrCreate') {
-      transportRequestCreate script:this, changeDocumentId:'8000000112',developmentSystemId: 'SDS~ABAP/219',applicationId: 'HCP'
+      transportRequestCreate script:this, changeDocumentId:'8000000309',developmentSystemId: 'CD1~EXT_SRV',applicationId: 'HCP'
   }
-  stage('solmanTRrelease') {
-      transportRequestRelease  script:this, changeDocumentId:'8000000112',developmentSystemId: 'SDS~ABAP/219',applicationId: 'HCP'
+   stage('solmanUpload') {
+      transportRequestUploadFile  script:this, changeDocumentId:'8000000309',developmentSystemId: 'CD1~EXT_SRV',applicationId: 'HCP'
   }
 }
