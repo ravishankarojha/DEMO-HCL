@@ -15,15 +15,7 @@ node() {
       mtaBuild script: this
   }
    stage('CreateRepo') {
-     gctsCreateRepository {
-       script: this
-   client: '000',
-   abapCredentialsId: 'ABAPUserPasswordCredentialsId',
-   repository: 'myrepo',
-   remoteRepositoryURL: 'https://github.com/user/myrepo',
-   role: 'SOURCE',
-   vSID: 'ABC'
-     }
+     gctsCreateRepository  script: this
   }
   stage('neoDeploy') {
        neoDeploy script: this
