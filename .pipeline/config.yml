@@ -2,7 +2,7 @@
 general:
    changeManagement:
            endpoint: 'http://52.184.190.82:8000/sap/opu/odata/sap/AI_CRM_GW_CM_CI_SRV'
-           clientOpts: ''
+           clientOpts: 'SOLMAN'
            type: ''
 
 steps:
