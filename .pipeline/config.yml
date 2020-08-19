@@ -17,7 +17,7 @@ steps:
       applicationId: 'HCP'
       
 steps:  
-     gctsCreateRepository:
+    gctsCreateRepository:
     host: 'https://hcluks4hana.hcldigilabs.com:8002'
     client: '000'
     abapCredentialsId: 'ABAPUserPasswordCredentialsId'
