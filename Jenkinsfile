@@ -15,14 +15,16 @@ node() {
       mtaBuild script: this
   }
    stage('CreateRepo') {
-  gctsCreateRepository script: this
-     host: 'http://hcluks4hana.hcldigilabs.com:8001',
-  client: '000',
-  abapCredentialsId: 'ABAPUserPasswordCredentialsId',
-  repository: 'myrepo',
-  remoteRepositoryURL: 'https://github.com/user/myrepo',
-  role: 'SOURCE',
-  vSID: 'ABC'
+     gctsCreateRepository {
+       script: this
+      host: 'http://hcluks4hana.hcldigilabs.com:8001',
+   client: '000',
+   abapCredentialsId: 'ABAPUserPasswordCredentialsId',
+   repository: 'myrepo',
+   remoteRepositoryURL: 'https://github.com/user/myrepo',
+   role: 'SOURCE',
+   vSID: 'ABC'
+     }
   }
   stage('neoDeploy') {
        neoDeploy script: this
