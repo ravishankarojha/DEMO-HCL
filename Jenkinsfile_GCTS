@@ -2,7 +2,7 @@
 
 node() {
 
-stage('ATC CHECK GCTS') {
+stage('CreateRepo') {
 gctsCreateRepository(
   script: this,
   host: 'https://hcluks4hana.hcldigilabs.com:8001',
@@ -14,13 +14,33 @@ gctsCreateRepository(
   vSID: 'FEF'
   )
 }
+stage('CloneRepo') {
+gctsCloneRepository(
+  script: this,
+  host: 'https://hcluks4hana.hcldigilabs.com:8001',
+  client: '200',
+  abapCredentialsId: 'ABAPUserPasswordCredentialsId',
+  repository: 'techED-app'
+)
+}
+
+stage('GCTS DEPLOY') {
+gctsDeploy(
+  script: this,
+  host: 'https://hcluks4hana.hcldigilabs.com:8001',
+  client: '200',
+  abapCredentialsId: 'ABAPUserPasswordCredentialsId',
+  repository: 'techED-app'
+)
+}
+
  stage('ATC CHECK GCTS') {
      gctsExecuteABAPUnitTests(
   script: this,
   host: 'https://hcluks4hana.hcldigilabs.com:8001',
   client: '200',
   abapCredentialsId: 'ABAPUserPasswordCredentialsId',
-  repository: 'DEMO-HCL'
+  repository: 'techED-app'
   )
   }
 }
