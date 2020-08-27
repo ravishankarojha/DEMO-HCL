@@ -3,6 +3,12 @@
 node() {
 
  stage('ATC CHECK GCTS') {
-     gctsExecuteABAPUnitTests script: this
+     gctsExecuteABAPUnitTests(
+  script: this,
+  host: 'https://hcluks4hana.hcldigilabs.com:8001',
+  client: '000',
+  abapCredentialsId: 'ABAPUserPasswordCredentialsId',
+  repository: 'DEMO-HCL'
+  )
   }
 }
