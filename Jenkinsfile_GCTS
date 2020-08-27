@@ -25,7 +25,7 @@ gctsCloneRepository(
 }
 
 stage('GCTS DEPLOY') {
-gctsDeploy(
+gctsDeployCommit(
   script: this,
   host: 'https://hcluks4hana.hcldigilabs.com:8001',
   client: '200',
