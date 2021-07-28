@@ -1,26 +1,44 @@
-@Library('piper-library-os') _
+@Library('piper-lib-os') _
 
 node() {
 
-  stage('prepare') {
-
-      checkout scm
-
-      setupCommonPipelineEnvironment script:this
-
-           checkChangeInDevelopment script: this,changeDocumentId:'8000001858'     
-    
-       }
- stage('build') {
-      mtaBuild script: this
-  }
-  stage('neoDeploy') {
-       neoDeploy script: this
-  }
-  stage('solmanTrCreate') {
-      transportRequestCreate script:this, changeDocumentId:'8000001858',developmentSystemId: 'CD1~EXT_SRV',applicationId: 'HCP'
-  }
-   stage('solmanUpload') {
-      transportRequestUploadFile  script:this, changeDocumentId:'8000001858',developmentSystemId: 'CD1~EXT_SRV',applicationId: 'HCP'
+stage('CreateRepo') {
+gctsCreateRepository(
+  script: this,
+  host: 'https://hcluks4hana.hcldigilabs.com:8001',
+  client: '200',
+  abapCredentialsId: 'ABAPUserPasswordCredentialsId',
+  repository: 'techED-app',
+  remoteRepositoryURL: 'https://github.com/ravishankarojha/techED-app',
+  role: 'Development',
+  vSID: 'FEF'
+  )
+}
+stage('CloneRepo') {
+gctsCloneRepository(
+  script: this,
+  host: 'https://hcluks4hana.hcldigilabs.com:8001',
+  client: '200',
+  abapCredentialsId: 'ABAPUserPasswordCredentialsId',
+  repository: 'techED-app'
+)
+}
+stage('gctsDeploy') {
+gctsDeploy(
+  script: this,
+  host: 'https://hcluks4hana.hcldigilabs.com:8001',
+  client: '200',
+  abapCredentialsId: 'ABAPUserPasswordCredentialsId',
+  repository: 'techED-app'
+)
+}
+ stage('ATC CHECK GCTS') {
+     gctsExecuteABAPUnitTests(
+  script: this,
+  host: 'https://hcluks4hana.hcldigilabs.com:8001',
+  client: '200',
+  abapCredentialsId: 'ABAPUserPasswordCredentialsId',
+  repository: 'techED-app'
+  )
   }
 }
